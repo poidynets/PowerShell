@@ -1,0 +1,10 @@
+Import-Module ActiveDirectory
+
+$users = Get-Content -Path c:\Temp\Users.txt
+$Group = Read-Host "Type Group Name:" | Get-ADGroup
+
+ForEach ($user in $users) 
+    {
+    Add-ADGroupMember -identity $Group -Members $user
+    Write-Host "Group added to $user"
+    } 
